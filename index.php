@@ -1,3 +1,6 @@
+<?php
+    include_once 'logic/function.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,26 +23,21 @@
     <!-- Todo List Display -->
     <ul class="todo-list">
       <!-- Example Todo Item (to be rendered dynamically with PHP later) -->
-      <li class="todo-item">
-        <form method="POST" action="index.php" class="update-form">
-          <input type="hidden" name="id" value="1">
-          <input type="text" name="task" value="Learn PHP" class="todo-text">
-          <div class="actions">
-            <button type="submit" name="update" class="btn edit-btn">Update</button>
-            <button type="submit" name="delete" class="btn delete-btn">Delete</button>
-          </div>
-        </form>
-      </li>
-      <li class="todo-item">
-        <form method="POST" action="index.php" class="update-form">
-          <input type="hidden" name="id" value="2">
-          <input type="text" name="task" value="Practice SQL" class="todo-text">
-          <div class="actions">
-            <button type="submit" name="update" class="btn edit-btn">Update</button>
-            <button type="submit" name="delete" class="btn delete-btn">Delete</button>
-          </div>
-        </form>
-      </li>
+    <?php foreach($todos AS $todo): ?>
+
+        <li class="todo-item">
+          <form method="POST" action="index.php" class="update-form">
+            <input type="hidden" name="id" value="1">
+            <input type="text" name="task" value="<?php echo htmlspecialchars($todo['list'])?>" class="todo-text">
+            <div class="actions">
+              <button type="submit" name="update" class="btn edit-btn">Update</button>
+              <button type="submit" name="delete" class="btn delete-btn">Delete</button>
+            </div>
+          </form>
+        </li>
+    <?php endforeach;?>
+
+     
     </ul>
   </div>
 

@@ -4,7 +4,7 @@
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
     ]);
     
-    // SELECT * FROM `todo`
+    
 
 
 ?>
