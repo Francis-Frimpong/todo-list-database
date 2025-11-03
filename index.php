@@ -1,9 +1,17 @@
 <?php
 include_once 'logic/function.php';
-$message = insertData();
+
+if (isset($_POST['update'])) {
+    updateItem();
+} elseif (isset($_POST['delete'])) {
+    deleteItem();
+} elseif (isset($_POST['add'])) {
+    $message = insertData();
+}
+
 $todos = fetchAllData();
-deleteItem();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
