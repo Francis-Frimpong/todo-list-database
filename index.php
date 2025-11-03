@@ -1,5 +1,8 @@
 <?php
-    include_once 'logic/function.php';
+include_once 'logic/function.php';
+$message = insertData();
+$todos = fetchAllData();
+deleteItem();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,29 +23,26 @@
       <button type="submit" name="add" class="btn add-btn">Add</button>
     </form>
 
+    <?php if (!empty($message)): ?>
+      <p><?= htmlspecialchars($message) ?></p>
+    <?php endif; ?>
+
     <!-- Todo List Display -->
     <ul class="todo-list">
-      <!-- Example Todo Item (to be rendered dynamically with PHP later) -->
-    <?php foreach($todos AS $todo): ?>
-
+      <?php foreach ($todos as $todo): ?>
         <li class="todo-item">
           <form method="POST" action="index.php" class="update-form">
-            <input type="hidden" name="id" value="1">
-            <input type="text" name="task" value="<?php echo htmlspecialchars($todo['list'])?>" class="todo-text">
+            <input type="hidden" name="id" value="<?= $todo['id'] ?>">
+            <input type="text" name="task" value="<?= htmlspecialchars($todo['list']) ?>" class="todo-text">
             <div class="actions">
               <button type="submit" name="update" class="btn edit-btn">Update</button>
               <button type="submit" name="delete" class="btn delete-btn">Delete</button>
             </div>
           </form>
         </li>
-    <?php endforeach;?>
-
-     
+      <?php endforeach; ?>
     </ul>
   </div>
 
-  <script src="logic/app.js"></script>
 </body>
 </html>
-
-
