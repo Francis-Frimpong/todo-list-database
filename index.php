@@ -31,9 +31,7 @@ $todos = fetchAllData();
       <button type="submit" name="add" class="btn add-btn">Add</button>
     </form>
 
-    <?php if (!empty($message)): ?>
-      <p><?= htmlspecialchars($message) ?></p>
-    <?php endif; ?>
+    
 
     <!-- Todo List Display -->
     <ul class="todo-list">
